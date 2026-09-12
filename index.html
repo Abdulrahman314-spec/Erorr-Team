@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فريقي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">ف</span>
+      <h1>فريقي</h1>
+    </div>
+    <p class="tagline">سجل أعضاء التيم، وخدوا القرار مع بعض</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="team" role="tab" aria-selected="true">الأعضاء</button>
+    <button class="tab-btn" data-tab="poll" role="tab" aria-selected="false">التصويت</button>
+  </nav>
+
+  <main>
+
+    <!-- ===== TEAM SECTION ===== -->
+    <section id="team" class="panel active">
+
+      <form id="member-form" class="member-form">
+        <div class="field">
+          <label for="member-name">الاسم</label>
+          <input type="text" id="member-name" placeholder="اكتب الاسم هنا" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="member-role">الدور</label>
+          <input type="text" id="member-role" placeholder="مثال: مصمم، مطور، مسؤول محتوى" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn-primary">إضافة للفريق</button>
+      </form>
+
+      <div class="section-divider">
+        <span id="member-count">0 أعضاء</span>
+      </div>
+
+      <ul id="member-list" class="member-list"></ul>
+
+      <div id="team-empty" class="empty-state">
+        <p>لسه مافيش حد مسجل.</p>
+        <p class="empty-sub">ضيف أول عضو في الفريق من الفورم اللي فوق.</p>
+      </div>
+
+    </section>
+
+    <!-- ===== POLL SECTION ===== -->
+    <section id="poll" class="panel">
+
+      <div class="poll-card">
+        <p class="poll-eyebrow">استفتاء الفريق</p>
+        <h2 class="poll-question">موافقين على تقسيم الاشتراك؟</h2>
+
+        <div class="poll-options">
+          <button class="poll-option" data-choice="agree">
+            <span class="option-label">موافق</span>
+            <span class="option-bar"><span class="option-fill" id="fill-agree"></span></span>
+            <span class="option-stats"><span id="count-agree">0</span> صوت · <span id="percent-agree">0%</span></span>
+          </button>
+
+          <button class="poll-option" data-choice="disagree">
+            <span class="option-label">مش موافق</span>
+            <span class="option-bar"><span class="option-fill" id="fill-disagree"></span></span>
+            <span class="option-stats"><span id="count-disagree">0</span> صوت · <span id="percent-disagree">0%</span></span>
+          </button>
+        </div>
+
+        <p id="vote-status" class="vote-status"></p>
+
+        <div class="poll-actions">
+          <button id="change-vote-btn" class="btn-ghost" hidden>غيّر صوتك</button>
+          <button id="reset-poll-btn" class="btn-ghost danger">تصفير النتائج</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>البيانات محفوظة على جهازك بس (localStorage) — من غير سيرفر.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

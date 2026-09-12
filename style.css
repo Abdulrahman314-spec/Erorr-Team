@@ -1,0 +1,417 @@
+:root {
+  --bg: #0a0908;
+  --bg-raised: #141210;
+  --bg-card: #17140f;
+  --hairline: #2c2620;
+  --gold: #c9a24b;
+  --gold-bright: #e6c46e;
+  --gold-dim: #7a6635;
+  --text: #efe9dc;
+  --text-dim: #a89f8d;
+  --text-faint: #6b6357;
+  --red: #b4483a;
+  --font-display: 'Amiri', serif;
+  --font-body: 'Cairo', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(201, 162, 75, 0.06), transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(201, 162, 75, 0.04), transparent 40%);
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 999;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  text-align: center;
+  padding: 3.5rem 1.5rem 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold-bright);
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+.tagline {
+  color: var(--text-dim);
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto 0;
+  max-width: 340px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 4px;
+  background: var(--bg-raised);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tab-btn.active {
+  background: var(--gold);
+  color: #16130c;
+}
+
+/* ---------- Main / Panels ---------- */
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.panel {
+  display: none;
+  animation: fadeIn 0.35s ease;
+}
+
+.panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Member form ---------- */
+.member-form {
+  background: var(--bg-card);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.field input {
+  background: var(--bg);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus {
+  border-color: var(--gold);
+}
+
+.field input::placeholder {
+  color: var(--text-faint);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #16130c;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover { background: var(--gold-bright); }
+.btn-primary:active { transform: scale(0.98); }
+
+/* ---------- Divider ---------- */
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 1rem;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+
+.section-divider span {
+  padding: 0 0.9rem;
+}
+
+/* ---------- Member list ---------- */
+.member-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.member-name {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-role {
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.member-remove {
+  background: none;
+  border: 1px solid var(--hairline);
+  color: var(--text-faint);
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.member-remove:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--text-faint);
+}
+
+.empty-state p { margin: 0.2rem 0; }
+.empty-sub { font-size: 0.85rem; }
+
+/* ---------- Poll ---------- */
+.poll-card {
+  background: var(--bg-card);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 2rem 1.6rem;
+}
+
+.poll-eyebrow {
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin: 0 0 0.6rem;
+}
+
+.poll-question {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 1.8rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.poll-option {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  background: var(--bg);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  text-align: right;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.poll-option:hover {
+  border-color: var(--gold-dim);
+}
+
+.poll-option.selected {
+  border-color: var(--gold);
+  background: rgba(201, 162, 75, 0.07);
+}
+
+.option-label {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.option-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.option-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold-bright));
+  transition: width 0.5s ease;
+}
+
+.option-stats {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.vote-status {
+  margin: 1.4rem 0 0;
+  min-height: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.poll-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--hairline);
+  color: var(--text-dim);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn-ghost.danger:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--hairline);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 420px) {
+  .site-header h1 { font-size: 1.9rem; }
+  .poll-question { font-size: 1.25rem; }
+  main { padding: 2rem 1rem 3rem; }
+}
